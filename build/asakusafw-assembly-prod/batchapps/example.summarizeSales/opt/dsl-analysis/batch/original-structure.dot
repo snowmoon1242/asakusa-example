@@ -1,0 +1,16 @@
+digraph {
+    rankdir = LR;
+    "c7b070c9-9b07-4294-a694-88befd5b154a" [shape=box, label="Batch\nSummarizeBatch"];
+    "4e155c0a-55e8-4876-8b6d-afa21f000c9a" [shape=box, label="JobFlow\nCategorySummaryJob"];
+    "c1dd9f32-6dc2-440c-811d-32892b222ae9" [shape=box, label="Summarize\nCategorySummaryOperator#summarizeByCategory"];
+    "4e155c0a-55e8-4876-8b6d-afa21f000c9a" -> "c1dd9f32-6dc2-440c-811d-32892b222ae9";
+    "5f370434-705c-480d-b660-cec826501abc" [shape=box, label="Update\nCategorySummaryOperator#setErrorMessage"];
+    "4e155c0a-55e8-4876-8b6d-afa21f000c9a" -> "5f370434-705c-480d-b660-cec826501abc";
+    "cdd8434b-6f6d-4dce-9d59-6eff2cfb3e69" [shape=box, label="MasterCheck\nCategorySummaryOperator#checkStore"];
+    "4e155c0a-55e8-4876-8b6d-afa21f000c9a" -> "cdd8434b-6f6d-4dce-9d59-6eff2cfb3e69";
+    "6778a32d-8611-49b0-9c3e-90581c60b7cb" [shape=box, label="Update\nCategorySummaryOperator#setErrorMessage"];
+    "4e155c0a-55e8-4876-8b6d-afa21f000c9a" -> "6778a32d-8611-49b0-9c3e-90581c60b7cb";
+    "4607986e-346a-4157-8342-3d3b6eec07b8" [shape=box, label="MasterJoin\nCategorySummaryOperator#joinItemInfo"];
+    "4e155c0a-55e8-4876-8b6d-afa21f000c9a" -> "4607986e-346a-4157-8342-3d3b6eec07b8";
+    "c7b070c9-9b07-4294-a694-88befd5b154a" -> "4e155c0a-55e8-4876-8b6d-afa21f000c9a";
+}

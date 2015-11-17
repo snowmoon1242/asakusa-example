@@ -1,0 +1,9 @@
+core.batchId = example.summarizeSales
+core.buildId = 40a4f34a-4aab-4521-bc78-cde564ee46f5
+ASAKUSA_DEVELOP_HOME = /Users/snowmoon_polarbear/asakusa-develop074
+ASAKUSA_HOME = /Users/snowmoon_polarbear/asakusa-develop074/asakusa
+com.asakusafw.batchapp.build.java.version = 1.7.0_79
+com.asakusafw.batchapp.build.timestamp = 2015-11-17 14:59:51 (JST)
+com.asakusafw.batchapp.project.version = unspecified
+com.asakusafw.compiler.options = XjavaVersion=1.7
+com.asakusafw.framework.version = 0.7.4-hadoop1

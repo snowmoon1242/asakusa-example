@@ -1,0 +1,23 @@
+digraph {
+    "10f9780c-9307-4adb-b030-d759082b1905" [shape=invhouse, label="errorRecord"];
+    subgraph "cluster_dde51505-8527-4044-bde7-61595340effd" {
+        label = "stage0002";
+        style = bold;
+        "81620a3b-0f75-48fb-bfa0-46fb916fa0b1" [shape=box, label="@Restructure\nrestructure"];
+        "8bc5d9fc-c481-4648-ae4c-b876f3c8769d" [shape=box, label="@Update\nCategorySummaryOperator.setErrorMessage"];
+        "db2fd719-e04a-4960-b4bb-e3549f7ec24e" [shape=box, label="@MasterJoin\nCategorySummaryOperator.joinItemInfo"];
+        "b9caa553-c117-405b-ba5a-5ed4e1a46c06" [shape=point];
+        "daa20a9c-993b-45de-ab31-063c92d56190" [shape=box, label="@SideDataCheck\nCategorySummaryOperator.checkStore"];
+    }
+    "4cd13fe6-34ed-4bcc-b9a3-e2b7a9095c5d" [shape=invhouse, label="salesDetail"];
+    "12cfb764-f8f6-49c5-84e6-6812587ae20c" [shape=point];
+    "7baec42f-f56c-4e66-b307-441c4cbfcc61" [shape=invhouse, label="itemInfo"];
+    "daa20a9c-993b-45de-ab31-063c92d56190" -> "db2fd719-e04a-4960-b4bb-e3549f7ec24e" [label="found>sales"];
+    "b9caa553-c117-405b-ba5a-5ed4e1a46c06" -> "db2fd719-e04a-4960-b4bb-e3549f7ec24e" [label="out>info"];
+    "db2fd719-e04a-4960-b4bb-e3549f7ec24e" -> "12cfb764-f8f6-49c5-84e6-6812587ae20c" [label="joined>in"];
+    "8bc5d9fc-c481-4648-ae4c-b876f3c8769d" -> "10f9780c-9307-4adb-b030-d759082b1905" [label="out>port"];
+    "81620a3b-0f75-48fb-bfa0-46fb916fa0b1" -> "8bc5d9fc-c481-4648-ae4c-b876f3c8769d" [label="out>record"];
+    "db2fd719-e04a-4960-b4bb-e3549f7ec24e" -> "81620a3b-0f75-48fb-bfa0-46fb916fa0b1" [label="missed>in"];
+    "4cd13fe6-34ed-4bcc-b9a3-e2b7a9095c5d" -> "daa20a9c-993b-45de-ab31-063c92d56190" [label="port>sales"];
+    "7baec42f-f56c-4e66-b307-441c4cbfcc61" -> "b9caa553-c117-405b-ba5a-5ed4e1a46c06" [label="port>in"];
+}

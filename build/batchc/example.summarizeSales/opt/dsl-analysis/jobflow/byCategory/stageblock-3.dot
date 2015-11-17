@@ -1,0 +1,15 @@
+digraph {
+    "fa978f1b-7c44-4f2b-84ca-d19d617be716" [shape=invhouse, label="categorySummary"];
+    "c282bf9f-2dd8-45de-b3ac-491ef3cadacc" [shape=box, label="@MasterJoin\nCategorySummaryOperator.joinItemInfo"];
+    subgraph "cluster_49b3edb0-f36c-4242-8fb6-4593402fa0ea" {
+        label = "stage0003";
+        style = bold;
+        "310ae518-618f-496b-9135-f92d1dbe27bf" [shape=point];
+        "ea40b5e3-3915-4996-8525-8c617ecf6bf3" [shape=box, label="@Summarize\nCategorySummaryOperator.summarizeByCategory"];
+    }
+    "43004125-2a4b-4ea2-9969-9c96c4d4d92c" [shape=point];
+    "c282bf9f-2dd8-45de-b3ac-491ef3cadacc" -> "43004125-2a4b-4ea2-9969-9c96c4d4d92c" [label="missed>in"];
+    "c282bf9f-2dd8-45de-b3ac-491ef3cadacc" -> "310ae518-618f-496b-9135-f92d1dbe27bf" [label="joined>in"];
+    "310ae518-618f-496b-9135-f92d1dbe27bf" -> "ea40b5e3-3915-4996-8525-8c617ecf6bf3" [label="out>info"];
+    "ea40b5e3-3915-4996-8525-8c617ecf6bf3" -> "fa978f1b-7c44-4f2b-84ca-d19d617be716" [label="out>port"];
+}

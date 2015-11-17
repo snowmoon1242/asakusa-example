@@ -1,0 +1,15 @@
+digraph {
+    "37b8932b-4b6b-4c9a-b59e-23b20beb8ad0" [shape=invhouse, label="salesDetail"];
+    subgraph "cluster_351b544f-e248-4f50-b3c0-4612b578f27d" {
+        label = "stage0001";
+        style = bold;
+        "d96995db-ec22-49a6-a0ee-1cf1a6bd7650" [shape=box, label="@Update\nCategorySummaryOperator.setErrorMessage"];
+        "b98d19c1-b3d5-46c7-9dc0-431edb32eec2" [shape=box, label="@SideDataCheck\nCategorySummaryOperator.checkStore"];
+        "c14b3d13-1b02-4400-8d14-91ca7847799a" [shape=box, label="@Restructure\nrestructure"];
+    }
+    "39deeea8-cb10-4cb8-adde-256c3ed0e506" [shape=invhouse, label="errorRecord"];
+    "37b8932b-4b6b-4c9a-b59e-23b20beb8ad0" -> "b98d19c1-b3d5-46c7-9dc0-431edb32eec2" [label="port>sales"];
+    "d96995db-ec22-49a6-a0ee-1cf1a6bd7650" -> "39deeea8-cb10-4cb8-adde-256c3ed0e506" [label="out>port"];
+    "b98d19c1-b3d5-46c7-9dc0-431edb32eec2" -> "c14b3d13-1b02-4400-8d14-91ca7847799a" [label="missed>in"];
+    "c14b3d13-1b02-4400-8d14-91ca7847799a" -> "d96995db-ec22-49a6-a0ee-1cf1a6bd7650" [label="out>record"];
+}

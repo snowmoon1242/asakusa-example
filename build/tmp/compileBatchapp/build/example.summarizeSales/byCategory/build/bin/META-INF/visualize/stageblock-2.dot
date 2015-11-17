@@ -1,0 +1,23 @@
+digraph {
+    subgraph "cluster_bbfbad7e-f541-4222-9c3c-8697cf48ddcd" {
+        label = "stage0002";
+        style = bold;
+        "bb036f5a-e120-4ff7-9837-46c686fa030c" [shape=box, label="@Restructure\nrestructure"];
+        "514464c6-131a-48ca-bcdb-578faee1fdb7" [shape=box, label="@Update\nCategorySummaryOperator.setErrorMessage"];
+        "2901cc50-1a0c-437c-ba90-943beb68adb4" [shape=box, label="@MasterJoin\nCategorySummaryOperator.joinItemInfo"];
+        "05fe4910-04a3-40d7-b149-1a70566c93e5" [shape=point];
+        "030a2b04-9659-4975-9f06-f68f68f5358a" [shape=box, label="@SideDataCheck\nCategorySummaryOperator.checkStore"];
+    }
+    "38802f15-646a-4826-8dd7-9a6c0f5d1218" [shape=point];
+    "1ce421bc-5fc0-48b1-ad3b-eb2084a93187" [shape=invhouse, label="itemInfo"];
+    "79532d55-101b-419c-b52c-6da6662f2b60" [shape=invhouse, label="salesDetail"];
+    "097b3b27-15a4-4239-90b1-2801166da46e" [shape=invhouse, label="errorRecord"];
+    "030a2b04-9659-4975-9f06-f68f68f5358a" -> "2901cc50-1a0c-437c-ba90-943beb68adb4" [label="found>sales"];
+    "05fe4910-04a3-40d7-b149-1a70566c93e5" -> "2901cc50-1a0c-437c-ba90-943beb68adb4" [label="out>info"];
+    "2901cc50-1a0c-437c-ba90-943beb68adb4" -> "38802f15-646a-4826-8dd7-9a6c0f5d1218" [label="joined>in"];
+    "514464c6-131a-48ca-bcdb-578faee1fdb7" -> "097b3b27-15a4-4239-90b1-2801166da46e" [label="out>port"];
+    "bb036f5a-e120-4ff7-9837-46c686fa030c" -> "514464c6-131a-48ca-bcdb-578faee1fdb7" [label="out>record"];
+    "2901cc50-1a0c-437c-ba90-943beb68adb4" -> "bb036f5a-e120-4ff7-9837-46c686fa030c" [label="missed>in"];
+    "79532d55-101b-419c-b52c-6da6662f2b60" -> "030a2b04-9659-4975-9f06-f68f68f5358a" [label="port>sales"];
+    "1ce421bc-5fc0-48b1-ad3b-eb2084a93187" -> "05fe4910-04a3-40d7-b149-1a70566c93e5" [label="port>in"];
+}

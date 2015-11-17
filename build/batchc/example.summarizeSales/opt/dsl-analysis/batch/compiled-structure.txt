@@ -1,0 +1,42 @@
+batch: example.summarizeSales
+flow: byCategory
+    input:
+        salesDetail (com.example.jobflow.SalesDetailFromCsv)
+        storeInfo (com.example.jobflow.StoreInfoFromCsv)
+        itemInfo (com.example.jobflow.ItemInfoFromCsv)
+    output:
+        categorySummary (com.example.jobflow.CategorySummaryToCsv)
+        errorRecord (com.example.jobflow.ErrorRecordToCsv)
+    stages:
+        prologue:
+            stage: com.example.batchapp.example.summarizeSales.byCategory.directio.prologue.StageClient
+        main:
+            stage: com.example.batchapp.example.summarizeSales.byCategory.stage0001.StageClient
+                mapper: com.example.batchapp.example.summarizeSales.byCategory.stage0001.StageMapper1
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0001.MapFragment1
+                        operator: CategorySummaryOperator#checkStore(@SideDataCheck)
+                            side-data: storeInfo (com.example.jobflow.StoreInfoFromCsv)
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0001.MapFragment2
+                        operator: CoreOperatorFactory#restructure(@Restructure)
+                        operator: CategorySummaryOperator#setErrorMessage(@Update)
+            stage: com.example.batchapp.example.summarizeSales.byCategory.stage0002.StageClient
+                mapper: com.example.batchapp.example.summarizeSales.byCategory.stage0002.StageMapper1
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0002.MapFragment1
+                        operator: CategorySummaryOperator#checkStore(@SideDataCheck)
+                            side-data: storeInfo (com.example.jobflow.StoreInfoFromCsv)
+                mapper: com.example.batchapp.example.summarizeSales.byCategory.stage0002.StageMapper2
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0002.MapFragment2
+                reducer: com.example.batchapp.example.summarizeSales.byCategory.stage0002.StageReducer
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0002.ReduceFragment3
+                        operator: CategorySummaryOperator#joinItemInfo(@MasterJoin)
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0002.MapFragment4
+                        operator: CoreOperatorFactory#restructure(@Restructure)
+                        operator: CategorySummaryOperator#setErrorMessage(@Update)
+            stage: com.example.batchapp.example.summarizeSales.byCategory.stage0003.StageClient
+                mapper: com.example.batchapp.example.summarizeSales.byCategory.stage0003.StageMapper1
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0003.MapFragment1
+                reducer: com.example.batchapp.example.summarizeSales.byCategory.stage0003.StageReducer
+                    fragment: com.example.batchapp.example.summarizeSales.byCategory.stage0003.ReduceFragment2
+                        operator: CategorySummaryOperator#summarizeByCategory(@Summarize)
+        epilogue:
+            stage: com.example.batchapp.example.summarizeSales.byCategory.directio.epilogue.StageClient

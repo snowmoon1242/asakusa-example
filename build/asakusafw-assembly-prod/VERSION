@@ -1,0 +1,7 @@
+# Asakusa Framework Build Information
+asakusafw.version=0.7.4-hadoop2
+
+asakusafw.build.timestamp=2015-08-11 06:16:40 (UTC)
+asakusafw.build.java.version=1.7.0_60
+asakusafw.git.commit=d81b2d36399326416637fdc76f819e6ae376b9de
+asakusafw.git.branch=origin/release-hadoop2

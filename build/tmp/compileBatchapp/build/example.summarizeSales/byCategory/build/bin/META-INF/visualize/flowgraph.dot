@@ -1,0 +1,26 @@
+digraph {
+    "2294a438-d5c9-405b-ac99-9c8e932a673b" [shape=box, label="@MasterJoin\nCategorySummaryOperator.joinItemInfo"];
+    "cf46d822-204b-4493-80d1-e52b4f8956b2" [shape=invhouse, label="categorySummary"];
+    "d9188c40-248e-489a-98dc-8ef3bc81d3af" [shape=box, label="@Restructure\nrestructure"];
+    "6b92e82c-73e3-40e0-9d71-81e0f1871951" [shape=box, label="@MasterCheck\nCategorySummaryOperator.checkStore"];
+    "468138c8-5ee9-4e5b-99e5-91f3c6a051fc" [shape=box, label="@Summarize\nCategorySummaryOperator.summarizeByCategory"];
+    "7aa84a6d-6507-4cb6-ab9a-a12d288c5258" [shape=invhouse, label="storeInfo"];
+    "7ff05d3c-fc7f-41bb-a590-aa3e323c80e3" [shape=box, label="@Update\nCategorySummaryOperator.setErrorMessage"];
+    "e236bd9e-dba4-42d9-96c9-23fb83e16d94" [shape=invhouse, label="salesDetail"];
+    "752ac8da-7522-4ad5-b15c-02053cd0ba58" [shape=invhouse, label="itemInfo"];
+    "0c8bd8c0-6a7d-4080-8f4d-7b941286e486" [shape=box, label="@Restructure\nrestructure"];
+    "bbc9f514-f2a9-461b-b00e-f1bc37d4d719" [shape=invhouse, label="errorRecord"];
+    "a261b394-ccb6-44ca-a66d-13e398221701" [shape=box, label="@Update\nCategorySummaryOperator.setErrorMessage"];
+    "2294a438-d5c9-405b-ac99-9c8e932a673b" -> "468138c8-5ee9-4e5b-99e5-91f3c6a051fc" [label="joined>info"];
+    "2294a438-d5c9-405b-ac99-9c8e932a673b" -> "0c8bd8c0-6a7d-4080-8f4d-7b941286e486" [label="missed>in"];
+    "d9188c40-248e-489a-98dc-8ef3bc81d3af" -> "7ff05d3c-fc7f-41bb-a590-aa3e323c80e3" [label="out>record"];
+    "6b92e82c-73e3-40e0-9d71-81e0f1871951" -> "2294a438-d5c9-405b-ac99-9c8e932a673b" [label="found>sales"];
+    "6b92e82c-73e3-40e0-9d71-81e0f1871951" -> "d9188c40-248e-489a-98dc-8ef3bc81d3af" [label="missed>in"];
+    "468138c8-5ee9-4e5b-99e5-91f3c6a051fc" -> "cf46d822-204b-4493-80d1-e52b4f8956b2" [label="out>port"];
+    "7aa84a6d-6507-4cb6-ab9a-a12d288c5258" -> "6b92e82c-73e3-40e0-9d71-81e0f1871951" [label="port>info"];
+    "7ff05d3c-fc7f-41bb-a590-aa3e323c80e3" -> "bbc9f514-f2a9-461b-b00e-f1bc37d4d719" [label="out>port"];
+    "e236bd9e-dba4-42d9-96c9-23fb83e16d94" -> "6b92e82c-73e3-40e0-9d71-81e0f1871951" [label="port>sales"];
+    "752ac8da-7522-4ad5-b15c-02053cd0ba58" -> "2294a438-d5c9-405b-ac99-9c8e932a673b" [label="port>info"];
+    "0c8bd8c0-6a7d-4080-8f4d-7b941286e486" -> "a261b394-ccb6-44ca-a66d-13e398221701" [label="out>record"];
+    "a261b394-ccb6-44ca-a66d-13e398221701" -> "bbc9f514-f2a9-461b-b00e-f1bc37d4d719" [label="out>port"];
+}
